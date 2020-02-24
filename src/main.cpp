@@ -23,8 +23,8 @@ int main()
             }
             //отличный тест для проверки расширяемости:
             // mymap[10] = 10;
-            for(auto& [key, value] : mymap){
-                std::cout << key << " " << value << std::endl;
+            for(auto& i : mymap){
+                std::cout << i.first << " " << i.second << std::endl;
             }
 
      }
