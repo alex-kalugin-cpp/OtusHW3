@@ -47,8 +47,8 @@ int main()
             for(int i = 0; i < 10; ++i){
                 vec2.push_back(i);
             }
-            for(int i = 0; i < 10; ++i){
-                std::cout << vec2[i] << " ";
+            for(const auto &i : vec2){
+                std::cout << i << " ";
             }
             std::cout << std::endl;
         }
