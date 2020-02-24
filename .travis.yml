@@ -1,0 +1,17 @@
+language: cpp
+before_script:
+- sudo apt-get install libboost-test-dev -y
+- echo "deb http://archive.ubuntu.com/ubuntu xenial main universe" | sudo tee -a /etc/apt/sources.list
+- sudo apt-get update -qq
+script:
+- cmake .
+- cmake --build .
+#- cmake --build . --target test
+- cmake --build . --target package
+#- ls
+
+deploy:
+  provider: script
+  skip_cleanup: true
+  script:
+  - curl -T ip_filter-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb -ualex-kalugin-cpp:$BINTRAY_API_KEY "https://api.bintray.com/content/alex-kalugin-cpp/Otus-cpp3/allocator/$TRAVIS_BUILD_NUMBER/allocator-0.0.$TRAVIS_BUILD_NUMBER-Linux.deb;deb_distribution=trusty;deb_component=main;deb_architecture=amd64;publish=1"
